@@ -22,5 +22,5 @@ plot2_data <- NEI %>% group_by(year) %>%
 
 plot3_data <- NEI %>% filter(fips == "24510")
 
-CoalCombustSCC <- SCC$SCC[grep("[Cc]oal.+[Cc]ombust|[Cc]ombust.+[Cc]oal",unique(SCC$SCC.Level.Four),value=FALSE)]
+CoalCombustSCC <- SCC$SCC[grep("Fuel Comb.+[Cc]oal",SCC$EI.Sector)]
 plot4_data <- NEI %>% filter(SCC %in% CoalCombustSCC) 
