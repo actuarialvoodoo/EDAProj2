@@ -6,6 +6,7 @@ SCC<-readRDS("Source_Classification_Code.rds")
 NEI$type<-factor(NEI$type)
 NEI$Pollutant<-factor(NEI$Pollutant)
 NEI$SCC<-factor(NEI$SCC)
+NEI$year<-factor(NEI$year)
 
 library(dplyr)
 plot1_year_list <- c(1999,2002,2005,2008)
@@ -20,3 +21,6 @@ plot2_data <- NEI %>% group_by(year) %>%
                summarise_each(funs(sum),Emissions1000)
 
 plot3_data <- NEI %>% filter(fips == "24510")
+
+CoalCombustSCC <- SCC$SCC[grep("[Cc]oal.+[Cc]ombust|[Cc]ombust.+[Cc]oal",unique(SCC$SCC.Level.Four),value=FALSE)]
+plot4_data <- NEI %>% filter(SCC %in% CoalCombustSCC) 
