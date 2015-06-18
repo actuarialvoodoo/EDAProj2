@@ -19,4 +19,4 @@ plot2_data <- NEI %>% group_by(year) %>%
                filter(fips=="24510") %>%
                summarise_each(funs(sum),Emissions1000)
 
-plot3_data <- NEI %>% filter(fips == "24510")
+plot3_data <- NEI %>% filter(fips == "24510") %>% mutate(year=factor(year))
