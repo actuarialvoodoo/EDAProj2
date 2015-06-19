@@ -24,3 +24,8 @@ plot3_data <- NEI %>% filter(fips == "24510")
 
 CoalCombustSCC <- SCC$SCC[grep("Fuel Comb.+[Cc]oal",SCC$EI.Sector)]
 plot4_data <- NEI %>% filter(SCC %in% CoalCombustSCC) 
+
+MotorVeh<- SCC$SCC[grep("Mobile.+Vehicles",SCC$EI.Sector)]
+plot5_data <- NEI %>% filter(SCC %in% MotorVeh, fips=="24510")
+
+plot6_data <- NEI %>% filter(SCC %in% MotorVeh, fips %in% c("24510","06037"))
